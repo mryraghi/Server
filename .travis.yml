@@ -1,7 +1,9 @@
 language:
   - cpp
+compiler:
+  - g++
 before_install:
+  - sudo apt-get install libboost-dev
   - git clone https://github.com/boostorg/asio.git
   - cd asio/include
-  - ls
-  - cp -r boost/ /urs/local/include
+  - cp -r boost/ /urs/include
