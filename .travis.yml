@@ -3,4 +3,4 @@ language:
 before_install:
   - git clone https://github.com/boostorg/asio.git
   - cd asio/include
-  - cp -r boost /urs/local/include
+  - cp -r boost/ /urs/local/include
