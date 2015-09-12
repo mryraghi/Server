@@ -7,3 +7,4 @@ before_install:
   - git clone https://github.com/boostorg/asio.git
   - cd asio/include
   - sudo cp -r boost/ /usr/include
+  - echo "Ok"
