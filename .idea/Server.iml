@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/client/client.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/server/request_parser.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/server.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/session.cpp" isTestSource="false" />

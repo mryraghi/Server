@@ -14,6 +14,6 @@ set(SOURCE_FILES
 
 include_directories(${Boost_INCLUDE_DIRS})
 add_executable(client client/client.cpp)
-add_executable(tcp_echo server/tcp_echo.cpp server/server.cpp server/session.cpp )
+add_executable(tcp_echo server/tcp_echo.cpp server/server.cpp server/session.cpp)
 target_link_libraries( tcp_echo ${Boost_SYSTEM_LIBRARY} pthread )
 target_link_libraries( client ${Boost_SYSTEM_LIBRARY} pthread )

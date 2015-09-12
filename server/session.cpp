@@ -1,5 +1,6 @@
 #include "session.h"
 #include <iostream>
+#include "request_parser.hpp"
 std::array<char, 10> data_received;
 
 /**
@@ -98,6 +99,9 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       std::cout<<"Response message:\n"<<std::endl;
       strcpy(response_buffer, response.c_str());
       std::cout<<response_buffer<<std::endl;
+      std::cout<<"------------------------------------------------------------"<<std::endl;
+      request_parser rp;
+      rp.parse();
 
 
     boost::asio::async_write( socket_,
