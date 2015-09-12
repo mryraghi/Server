@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/client.dir/client/client.cpp.o  -o client -rdynamic /usr/local/lib/libboost_system.so -lpthread -Wl,-rpath,/usr/local/lib 

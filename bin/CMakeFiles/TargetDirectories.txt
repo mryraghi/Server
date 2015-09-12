@@ -1,0 +1,2 @@
+/home/romeo/Documents/Server/bin/CMakeFiles/tcp_echo.dir
+/home/romeo/Documents/Server/bin/CMakeFiles/client.dir
