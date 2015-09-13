@@ -141,7 +141,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       std::string response = url;
 
       //std::cout<<"Response message:\n"<<std::endl;
-      //strcpy(response_buffer, response.c_str());
+      strcpy(response_buffer, response.c_str());
       //std::cout<<response_buffer<<std::endl;
       std::cout<<"------------------------------------------------------------"<<std::endl;
 
