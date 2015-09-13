@@ -131,7 +131,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           std::cout << "param   : " << i->first << " = " << i->second << '\n';
       std::string entity_body;
       std::fstream f;     // file stream
-      if (url == "/" && params.empty()) {
+      if (url != "/SimplePost.html" && params.empty()) {
           url = "/error.html";
           error_code = 404;
       }
@@ -152,9 +152,6 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                   entity_body.append(" = ");
                   entity_body.append(i->second);
               }
-          } else {
-              entity_body.clear();
-              entity_body = "Romeo is sorry, an error occurred.";
           }
       }
 
