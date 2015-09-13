@@ -17,7 +17,9 @@ session::session( boost::asio::io_service& io_service ) : socket_(io_service) {
     timer_end_session = std::chrono::steady_clock::now() + std::chrono::minutes(1);
     std::cout << "-----[New session created, session valid for 1 min!]-----" << std::endl;
     valid_session = true;
+
     while (std::chrono::steady_clock::now() < timer_end_session) { }
+
     valid_session = false;
 
 } // end constructor
