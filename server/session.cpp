@@ -150,7 +150,13 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
               }
           } else {
               entity_body.clear();
-              entity_body.append("Failed to open the page.");
+              std::string error_file_path = "/home/romeo/Documents/Server/error.html";
+              f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
+              std::string tmp;     // temp variable we will use for getting chunked data
+              while (!f.eof()) {     // read data until the end of file is reached
+                  f >> tmp;     // get first chunk of data
+                  entity_body.append(tmp);
+              }
           }
       }
 
