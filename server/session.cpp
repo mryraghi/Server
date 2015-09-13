@@ -1,5 +1,6 @@
 #include "session.h"
 #include <iostream>
+#include <fstream>
 std::array<char, 10> data_received;
 
 /**
@@ -127,10 +128,22 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
       for(i = params.begin(); i != params.end(); ++i)
           std::cout << "param   : " << i->first << " = " << i->second << '\n';
-
+      std::string entity_body;
+      std::fstream f;     // file stream
+      f.open(url.c_str(), std::ios_base::in);     // open file for reading
+      if (f.good()) {     // check if the file can be read
+          std::string tmp;     // temp variable we will use for getting chunked data
+          while (!f.eof()) {     // read data until the end of file is reached
+              f >> tmp;     // get first chunk of data
+              entity_body.append(tmp);
+          }
+      } else {
+          entity_body.clear();
+          entity_body.append("Failed to open the page.");
+      }
 
       //std::cout<<"\n\n\n\nRequest Message: "<<request<<"\n"<<std::endl;
-      std::string entity_body = "<html><body><p>Hello\n\n\n" + url + "</p></body></html>";
+      //std::string entity_body = "<html><body><p>Hello\n\n\n" + url + "</p></body></html>";
 
       long len = entity_body.length();
 
