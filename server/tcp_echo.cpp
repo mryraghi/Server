@@ -33,10 +33,11 @@ int main(int argc, const char** argv ) {
     int port = atoi( argv[1] );
     port_global = port;
 
-    boost::asio::deadline_timer t(io_service, boost::posix_time::seconds(60));
-    t.async_wait(&non_persistent_connection);
 
     std::cout<<"[running] tcp echo server listening on port "<<port<< std::endl;
+
+    boost::asio::deadline_timer t(io_service, boost::posix_time::seconds(60));
+    t.async_wait(&non_persistent_connection);
 
     io_service.run();
 

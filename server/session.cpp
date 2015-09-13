@@ -29,7 +29,7 @@ session::session( boost::asio::io_service& io_service ) : socket_(io_service) {
 */
 session::~session() {
 
-    std::cout << "-----[Session terminated after 1 min!]-----" << std::endl;
+    std::cout << "------------[Session terminated after 1 min!]------------" << std::endl;
 
 } // end destructor
 
