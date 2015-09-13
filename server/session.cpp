@@ -131,17 +131,26 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       std::string entity_body;
       std::fstream f;     // file stream
       std::string complete_path = "/home/romeo/Documents/Server" + url;
-      f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
-      if (f.good()) {     // check if the file can be read
-          std::string tmp;     // temp variable we will use for getting chunked data
-          while (!f.eof()) {     // read data until the end of file is reached
-              f >> tmp;     // get first chunk of data
-              entity_body.append(tmp);
+
+      try {
+          f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
+          if (f.good()) {     // check if the file can be read
+              std::string tmp;     // temp variable we will use for getting chunked data
+              while (!f.eof()) {     // read data until the end of file is reached
+                  f >> tmp;     // get first chunk of data
+                  entity_body.append(tmp);
+              }
+          } else {
+              entity_body.clear();
+              entity_body.append("Failed to open the page.");
           }
-      } else {
+      } catch (std::ios_base::failure e) {
           entity_body.clear();
           entity_body.append("Failed to open the page.");
       }
+
+
+
 
       //std::cout<<"\n\n\n\nRequest Message: "<<request<<"\n"<<std::endl;
       //std::string entity_body = "<html><body><p>Hello\n\n\n" + url + "</p></body></html>";
