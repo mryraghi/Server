@@ -1,10 +1,5 @@
 #include "server.h"
-#include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
-
-void print(const boost::system::error_code & /*e*/) {
-  std::cout << "Hello, world!\n";
-}
 
 /**
 
@@ -38,10 +33,6 @@ void server::start_accept() {
   _acceptor.async_accept(new_session->socket(), boost::bind(&server::handle_accept,
                                                               this, new_session,
                                                               boost::asio::placeholders::error ) );
-
-  boost::asio::deadline_timer t(_io_service, boost::posix_time::seconds(5));
-  t.async_wait(print);
-  _io_service.run();
 } // end start_accept() method
 
 
