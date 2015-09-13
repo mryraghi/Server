@@ -142,11 +142,12 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       } catch (std::ios_base::failure e) {
           if (!params.empty()) {
               entity_body.clear();
-              for (i = params.begin(); i != params.end(); ++i)
+              for (i = params.begin(); i != params.end(); ++i) {
                   entity_body.append("\nparam: ");
-              entity_body.append(i->first);
-              entity_body.append(" = ");
-              entity_body.append(i->second);
+                  entity_body.append(i->first);
+                  entity_body.append(" = ");
+                  entity_body.append(i->second);
+              }
           } else {
               entity_body.clear();
               entity_body.append("Failed to open the page.");
