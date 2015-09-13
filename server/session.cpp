@@ -3,6 +3,8 @@
 #include <fstream>
 #include <chrono>
 
+std::chrono::steady_clock::time_point timer_end_session = std::chrono::steady_clock::now()
+                                                          + std::chrono::minutes(1);
 /**
 
   Constructor:
@@ -77,10 +79,8 @@ void session::start() {
 void session::handle_read( const boost::system::error_code& error, size_t bytes_transferred ) {
 
   if (!error) {
-      std::chrono::steady_clock::time_point timer_end_session = std::chrono::steady_clock::now()
-                                                                + std::chrono::minutes(1);
 
-      while (std::chrono::steady_clock::now() < timer_end_sessio) {
+      while (std::chrono::steady_clock::now() < timer_end_session) {
           std::ostringstream ss;
           char response_buffer[1024];
 
