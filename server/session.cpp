@@ -134,19 +134,23 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
       try {
           f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
-          if (f.good()) {     // check if the file can be read
-              std::string tmp;     // temp variable we will use for getting chunked data
-              while (!f.eof()) {     // read data until the end of file is reached
-                  f >> tmp;     // get first chunk of data
-                  entity_body.append(tmp);
-              }
+          std::string tmp;     // temp variable we will use for getting chunked data
+          while (!f.eof()) {     // read data until the end of file is reached
+              f >> tmp;     // get first chunk of data
+              entity_body.append(tmp);
+          }
+      } catch (std::ios_base::failure e) {
+          if (!params.empty()) {
+              entity_body.clear();
+              for (i = params.begin(); i != params.end(); ++i)
+                  entity_body.append("\nparam: ");
+              entity_body.append(i->first);
+              entity_body.append(" = ");
+              entity_body.append(i->second);
           } else {
               entity_body.clear();
               entity_body.append("Failed to open the page.");
           }
-      } catch (std::ios_base::failure e) {
-          entity_body.clear();
-          entity_body.append("Failed to open the page.");
       }
 
 
