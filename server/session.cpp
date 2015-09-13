@@ -135,6 +135,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       long len = entity_body.length();
 
       ss << len;
+
       std::string content_length = ss.str();
       std::string header = "HTTP/1.1 200 OK\r\nContent-length: " + content_length + "\r\n\r\n";
       std::string response = header + entity_body;
