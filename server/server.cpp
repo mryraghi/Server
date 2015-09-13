@@ -33,6 +33,9 @@ void server::start_accept() {
                                                               this, new_session,
                                                               boost::asio::placeholders::error ) );
 
+  boost::asio::deadline_timer t(_io_service, boost::posix_time::seconds(20));
+  t.async_wait(delete new_session);
+  _io_service.run();
 } // end start_accept() method
 
 

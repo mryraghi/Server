@@ -2,9 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+#include <boost/thread/thread.hpp>
 
-std::chrono::steady_clock::time_point timer_end_session;
-bool valid_session = false;
+
 /**
 
   Constructor:
@@ -14,13 +14,7 @@ bool valid_session = false;
 */
 session::session( boost::asio::io_service& io_service ) : socket_(io_service) {
 
-    timer_end_session = std::chrono::steady_clock::now() + std::chrono::minutes(1);
     std::cout << "-----[New session created, session valid for 1 min!]-----" << std::endl;
-    valid_session = true;
-
-    while (std::chrono::steady_clock::now() < timer_end_session) { }
-
-    valid_session = false;
 
 } // end constructor
 
@@ -84,7 +78,7 @@ void session::start() {
 */
 void session::handle_read( const boost::system::error_code& error, size_t bytes_transferred ) {
 
-    if (!error && valid_session) {
+    if (!error) {
 
 
         std::ostringstream ss;
