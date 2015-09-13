@@ -1,4 +1,4 @@
-# Install script for directory: /home/romeo/Documents/Server
+# Install script for directory: /home/romeo/ClionProjects/Server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/romeo/Documents/Server/bin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/romeo/ClionProjects/Server/bin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -6,33 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/romeo/Documents/Server/server/server.cpp
+/home/romeo/ClionProjects/Server/server/server.cpp
 server.h
-/home/romeo/Documents/Server/server/server.h
+/home/romeo/ClionProjects/Server/server/server.h
 iostream
 -
 
-/home/romeo/Documents/Server/server/server.h
+/home/romeo/ClionProjects/Server/server/server.h
 boost/asio.hpp
 -
 boost/bind.hpp
 -
 session.h
-/home/romeo/Documents/Server/server/session.h
+/home/romeo/ClionProjects/Server/server/session.h
 
-/home/romeo/Documents/Server/server/session.cpp
+/home/romeo/ClionProjects/Server/server/session.cpp
 session.h
-/home/romeo/Documents/Server/server/session.h
+/home/romeo/ClionProjects/Server/server/session.h
 iostream
 -
 
-/home/romeo/Documents/Server/server/session.h
+/home/romeo/ClionProjects/Server/server/session.h
 boost/asio.hpp
 -
 boost/bind.hpp
 -
 
-/home/romeo/Documents/Server/server/tcp_echo.cpp
+/home/romeo/ClionProjects/Server/server/tcp_echo.cpp
 iostream
 -
 string
@@ -40,9 +40,9 @@ string
 boost/array.hpp
 -
 session.h
-/home/romeo/Documents/Server/server/session.h
+/home/romeo/ClionProjects/Server/server/session.h
 server.h
-/home/romeo/Documents/Server/server/server.h
+/home/romeo/ClionProjects/Server/server/server.h
 
 /usr/local/include/boost/array.hpp
 boost/detail/workaround.hpp

@@ -43,10 +43,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/romeo/Documents/Server
+CMAKE_SOURCE_DIR = /home/romeo/ClionProjects/Server
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/romeo/Documents/Server/bin
+CMAKE_BINARY_DIR = /home/romeo/ClionProjects/Server/bin
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tcp_echo.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/tcp_echo.dir/flags.make
 
 CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o: CMakeFiles/tcp_echo.dir/flags.make
 CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o: ../server/tcp_echo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/Documents/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o -c /home/romeo/Documents/Server/server/tcp_echo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/ClionProjects/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o -c /home/romeo/ClionProjects/Server/server/tcp_echo.cpp
 
 CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/Documents/Server/server/tcp_echo.cpp > CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/ClionProjects/Server/server/tcp_echo.cpp > CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.i
 
 CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/Documents/Server/server/tcp_echo.cpp -o CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/ClionProjects/Server/server/tcp_echo.cpp -o CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.s
 
 CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o.provides.build: CMakeFiles/tcp_ech
 
 CMakeFiles/tcp_echo.dir/server/server.cpp.o: CMakeFiles/tcp_echo.dir/flags.make
 CMakeFiles/tcp_echo.dir/server/server.cpp.o: ../server/server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/Documents/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tcp_echo.dir/server/server.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/server.cpp.o -c /home/romeo/Documents/Server/server/server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/ClionProjects/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tcp_echo.dir/server/server.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/server.cpp.o -c /home/romeo/ClionProjects/Server/server/server.cpp
 
 CMakeFiles/tcp_echo.dir/server/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcp_echo.dir/server/server.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/Documents/Server/server/server.cpp > CMakeFiles/tcp_echo.dir/server/server.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/ClionProjects/Server/server/server.cpp > CMakeFiles/tcp_echo.dir/server/server.cpp.i
 
 CMakeFiles/tcp_echo.dir/server/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcp_echo.dir/server/server.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/Documents/Server/server/server.cpp -o CMakeFiles/tcp_echo.dir/server/server.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/ClionProjects/Server/server/server.cpp -o CMakeFiles/tcp_echo.dir/server/server.cpp.s
 
 CMakeFiles/tcp_echo.dir/server/server.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/tcp_echo.dir/server/server.cpp.o.provides.build: CMakeFiles/tcp_echo.
 
 CMakeFiles/tcp_echo.dir/server/session.cpp.o: CMakeFiles/tcp_echo.dir/flags.make
 CMakeFiles/tcp_echo.dir/server/session.cpp.o: ../server/session.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/Documents/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tcp_echo.dir/server/session.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/session.cpp.o -c /home/romeo/Documents/Server/server/session.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/romeo/ClionProjects/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tcp_echo.dir/server/session.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/tcp_echo.dir/server/session.cpp.o -c /home/romeo/ClionProjects/Server/server/session.cpp
 
 CMakeFiles/tcp_echo.dir/server/session.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tcp_echo.dir/server/session.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/Documents/Server/server/session.cpp > CMakeFiles/tcp_echo.dir/server/session.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/romeo/ClionProjects/Server/server/session.cpp > CMakeFiles/tcp_echo.dir/server/session.cpp.i
 
 CMakeFiles/tcp_echo.dir/server/session.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tcp_echo.dir/server/session.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/Documents/Server/server/session.cpp -o CMakeFiles/tcp_echo.dir/server/session.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/romeo/ClionProjects/Server/server/session.cpp -o CMakeFiles/tcp_echo.dir/server/session.cpp.s
 
 CMakeFiles/tcp_echo.dir/server/session.cpp.o.requires:
 
@@ -144,7 +144,7 @@ tcp_echo: CMakeFiles/tcp_echo.dir/server/session.cpp.o
 tcp_echo: CMakeFiles/tcp_echo.dir/build.make
 tcp_echo: /usr/local/lib/libboost_system.so
 tcp_echo: CMakeFiles/tcp_echo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/romeo/Documents/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable tcp_echo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/romeo/ClionProjects/Server/bin/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable tcp_echo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tcp_echo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -163,6 +163,6 @@ CMakeFiles/tcp_echo.dir/clean:
 .PHONY : CMakeFiles/tcp_echo.dir/clean
 
 CMakeFiles/tcp_echo.dir/depend:
-	cd /home/romeo/Documents/Server/bin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/romeo/Documents/Server /home/romeo/Documents/Server /home/romeo/Documents/Server/bin /home/romeo/Documents/Server/bin /home/romeo/Documents/Server/bin/CMakeFiles/tcp_echo.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/romeo/ClionProjects/Server/bin && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/romeo/ClionProjects/Server /home/romeo/ClionProjects/Server /home/romeo/ClionProjects/Server/bin /home/romeo/ClionProjects/Server/bin /home/romeo/ClionProjects/Server/bin/CMakeFiles/tcp_echo.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tcp_echo.dir/depend
 

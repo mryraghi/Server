@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/romeo/Documents/Server/server/server.cpp" "/home/romeo/Documents/Server/bin/CMakeFiles/tcp_echo.dir/server/server.cpp.o"
-  "/home/romeo/Documents/Server/server/session.cpp" "/home/romeo/Documents/Server/bin/CMakeFiles/tcp_echo.dir/server/session.cpp.o"
-  "/home/romeo/Documents/Server/server/tcp_echo.cpp" "/home/romeo/Documents/Server/bin/CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o"
+  "/home/romeo/ClionProjects/Server/server/server.cpp" "/home/romeo/ClionProjects/Server/bin/CMakeFiles/tcp_echo.dir/server/server.cpp.o"
+  "/home/romeo/ClionProjects/Server/server/session.cpp" "/home/romeo/ClionProjects/Server/bin/CMakeFiles/tcp_echo.dir/server/session.cpp.o"
+  "/home/romeo/ClionProjects/Server/server/tcp_echo.cpp" "/home/romeo/ClionProjects/Server/bin/CMakeFiles/tcp_echo.dir/server/tcp_echo.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

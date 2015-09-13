@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/romeo/Documents/Server/client/client.cpp
+/home/romeo/ClionProjects/Server/client/client.cpp
 iostream
 -
 istream

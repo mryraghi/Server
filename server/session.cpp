@@ -1,6 +1,5 @@
 #include "session.h"
 #include <iostream>
-#include "request_parser.hpp"
 std::array<char, 10> data_received;
 
 /**
@@ -86,7 +85,51 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       char response_buffer[1024];
 
       std::string request(data_);
-      std::cout<<"Request Message: "<<request<<"\n"<<std::endl;
+
+      std::istringstream iss(request);
+      std::string method;
+      std::string query;
+      std::string protocol;
+
+      if(!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol))
+      {
+          std::cout << "ERROR: parsing request\n";
+      }
+
+      iss.clear();
+      iss.str(query);
+
+      std::string url;
+
+      if(!std::getline(iss, url, '?')) // remove the URL part
+      {
+          std::cout << "ERROR: parsing request url\n";
+      }
+
+      // store query key/value pairs in a map
+      std::map<std::string, std::string> params;
+
+      std::string keyval, key, val;
+
+      while(std::getline(iss, keyval, '&')) // split each term
+      {
+          std::istringstream iss(keyval);
+
+          if(std::getline(std::getline(iss, key, '='), val))
+              params[key] = val;
+      }
+
+      std::cout << "protocol: " << protocol << '\n';
+      std::cout << "method  : " << method << '\n';
+      std::cout << "url     : " << url << '\n';
+
+      std::map<std::string, std::string>::iterator i;
+
+      for(i = params.begin(); i != params.end(); ++i)
+          std::cout << "param   : " << i->first << " = " << i->second << '\n';
+
+
+      std::cout<<"\n\n\n\nRequest Message: "<<request<<"\n"<<std::endl;
       std::string entity_body = "<html><body><p>Hello\n\n\n" + request + "</p></body></html>";
 
       long len = entity_body.length();
@@ -100,8 +143,6 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       strcpy(response_buffer, response.c_str());
       std::cout<<response_buffer<<std::endl;
       std::cout<<"------------------------------------------------------------"<<std::endl;
-      request_parser rp;
-      rp.parse();
 
 
     boost::asio::async_write( socket_,
