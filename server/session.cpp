@@ -129,19 +129,19 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           std::cout << "param   : " << i->first << " = " << i->second << '\n';
 
 
-      std::cout<<"\n\n\n\nRequest Message: "<<request<<"\n"<<std::endl;
-      std::string entity_body = "<html><body><p>Hello\n\n\n" + request + "</p></body></html>";
+      //std::cout<<"\n\n\n\nRequest Message: "<<request<<"\n"<<std::endl;
+      //std::string entity_body = "<html><body><p>Hello\n\n\n" + request + "</p></body></html>";
 
-      long len = entity_body.length();
+      //long len = entity_body.length();
 
-      ss << len;
-      std::string content_length = ss.str();
-      std::string header = "HTTP/1.1 200 OK\r\nContent-length: " + content_length + "\r\n\r\n";
-      std::string response = header + entity_body;
+      //ss << len;
+      //std::string content_length = ss.str();
+      //std::string header = "HTTP/1.1 200 OK\r\nContent-length: " + content_length + "\r\n\r\n";
+      //std::string response = header + entity_body;
 
-      std::cout<<"Response message:\n"<<std::endl;
-      strcpy(response_buffer, response.c_str());
-      std::cout<<response_buffer<<std::endl;
+      //std::cout<<"Response message:\n"<<std::endl;
+      //strcpy(response_buffer, response.c_str());
+      //std::cout<<response_buffer<<std::endl;
       std::cout<<"------------------------------------------------------------"<<std::endl;
 
 
