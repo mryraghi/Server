@@ -14,7 +14,7 @@
 */
 session::session( boost::asio::io_service& io_service ) : socket_(io_service) {
 
-    std::cout << "-----[New session created, session valid for 1 min!]-----" << std::endl;
+    std::cout << "-------------------[New session created]-----------------" << std::endl;
 
 } // end constructor
 
@@ -29,7 +29,7 @@ session::session( boost::asio::io_service& io_service ) : socket_(io_service) {
 */
 session::~session() {
 
-    std::cout << "------------[Session terminated after 1 min!]------------" << std::endl;
+    std::cout << "-------------------[Session terminated]------------------" << std::endl;
 
 } // end destructor
 
@@ -174,8 +174,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                                    boost::bind(&session::handle_write, this,
                                                boost::asio::placeholders::error));
 
-        delete this;
-  } else delete this;
+
+    } else delete this;
 
 } // end handle_read() method
 
