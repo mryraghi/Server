@@ -130,6 +130,9 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           std::cout << "param   : " << i->first << " = " << i->second << '\n';
       std::string entity_body;
       std::fstream f;     // file stream
+      if (url == "/" && params.empty()) {
+          url = "/error.html";
+      }
       std::string complete_path = "/home/romeo/Documents/Server" + url;
 
       try {
@@ -150,13 +153,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
               }
           } else {
               entity_body.clear();
-              std::string error_file_path = "/home/romeo/Documents/Server/error.html";
-              f.open(error_file_path.c_str(), std::ios_base::in);     // open file for reading
-              std::string temp2;     // temp variable we will use for getting chunked data
-              while (!f.eof()) {     // read data until the end of file is reached
-                  f >> temp2;     // get first chunk of data
-                  entity_body.append(temp2);
-              }
+              entity_body.append("Romeo is sorry, an error occurred.");
           }
       }
 
