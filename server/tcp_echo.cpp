@@ -11,13 +11,6 @@
 
 using boost::asio::ip::tcp;
 
-boost::asio::io_service io_service;
-int port_global;
-
-void non_persistent_connection(const boost::system::error_code & /*e*/) {
-    server tcp_echo_server(io_service, port_global);
-}
-
 int main(int argc, const char** argv ) {
 
 	if (argc != 2) {
@@ -31,13 +24,11 @@ int main(int argc, const char** argv ) {
     }
 
     int port = atoi( argv[1] );
-    port_global = port;
+    boost::asio::io_service io_service;
 
+    server tcp_echo_server(io_service, port);
 
     std::cout<<"[running] tcp echo server listening on port "<<port<< std::endl;
-
-    boost::asio::deadline_timer t(io_service, boost::posix_time::seconds(60));
-    t.async_wait(&non_persistent_connection);
 
     io_service.run();
 
