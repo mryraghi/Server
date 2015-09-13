@@ -12,4 +12,4 @@ mkdir $DIR
 cd $DIR
 cmake ../
 make
-cd $DIR
+./tcp_echo 8080
