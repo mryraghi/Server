@@ -155,6 +155,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
               entity_body.clear();
               entity_body.append("Romeo is sorry, an error occurred.");
           }
+          entity_body.clear();
+          entity_body.append("Romeo is sorry, an error occurred.");
       }
 
 
