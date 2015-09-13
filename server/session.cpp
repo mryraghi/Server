@@ -91,6 +91,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       std::string method;
       std::string query;
       std::string protocol;
+      int error_code = 200;
 
       if(!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol))
       {
@@ -132,15 +133,15 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       std::fstream f;     // file stream
       if (url == "/" && params.empty()) {
           url = "/error.html";
+          error_code = 404;
       }
       std::string complete_path = "/home/romeo/Documents/Server" + url;
-
       try {
           f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
-          std::string temp1;     // temp variable we will use for getting chunked data
+          std::string temp;     // temp variable we will use for getting chunked data
           while (!f.eof()) {     // read data until the end of file is reached
-              f >> temp1;     // get first chunk of data
-              entity_body.append(temp1);
+              f >> temp;     // get first chunk of data
+              entity_body.append(temp);
           }
       } catch (std::ios_base::failure e) {
           if (!params.empty()) {
@@ -153,10 +154,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
               }
           } else {
               entity_body.clear();
-              entity_body.append("Romeo is sorry, an error occurred.");
+              entity_body = "Romeo is sorry, an error occurred.";
           }
-          entity_body.clear();
-          entity_body.append("Romeo is sorry, an error occurred.");
       }
 
 
@@ -170,7 +169,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
       ss << len;
 
       std::string content_length = ss.str();
-      std::string header = "HTTP/1.1 200 OK\r\nContent-length: " + content_length + "\r\n\r\n";
+      std::string header =
+              "HTTP/1.1 " + std::to_string(error_code) + " OK\r\nContent-length: " + content_length + "\r\n\r\n";
       std::string response = header + entity_body;
 
       //std::cout<<"Response message:\n"<<std::endl;
