@@ -130,7 +130,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           std::cout << "param   : " << i->first << " = " << i->second << '\n';
       std::string entity_body;
       std::fstream f;     // file stream
-      f.open(url.c_str(), std::ios_base::in);     // open file for reading
+      std::string complete_path = "/Documents/Server" + url;
+      f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
       if (f.good()) {     // check if the file can be read
           std::string tmp;     // temp variable we will use for getting chunked data
           while (!f.eof()) {     // read data until the end of file is reached
