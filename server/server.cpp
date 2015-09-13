@@ -34,7 +34,7 @@ void server::start_accept() {
                                                               boost::asio::placeholders::error ) );
 
   boost::asio::deadline_timer t(_io_service, boost::posix_time::seconds(20));
-  t.async_wait(delete new_session);
+  t.async_wait(delete_session(new_session));
   _io_service.run();
 } // end start_accept() method
 
@@ -55,3 +55,7 @@ void server::handle_accept( session* new_session, const boost::system::error_cod
   start_accept();
 
 } // end handle_accept() method
+
+void server::delete_session(session *session1) {
+  delete session1;
+}
