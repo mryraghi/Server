@@ -136,6 +136,19 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "<html lang=\"en\">\n"
                           "<head>\n"
                           "    <meta charset=\"UTF-8\">\n"
+                          "    <title>Page not found!</title>\n"
+                          "</head>\n"
+                          "<body>\n"
+                          "<h3>404 Page not found ;)</h3>\n"
+                          "\n"
+                          "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
+                          "</body>\n"
+                          "</html>";
+              } else {
+                  entity_body = "<!DOCTYPE html>\n"
+                          "<html lang=\"en\">\n"
+                          "<head>\n"
+                          "    <meta charset=\"UTF-8\">\n"
                           "    <title>SimplePost</title>\n"
                           "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
                           "</head>\n"
@@ -159,29 +172,23 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "</form>\n"
                           "</body>\n"
                           "</html>";
-              } else {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <meta charset=\"UTF-8\">\n"
-                          "    <title>Page not found!</title>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "<h3>404 Page not found ;)</h3>\n"
-                          "\n"
-                          "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
-                          "</body>\n"
-                          "</html>";
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
-                  entity_body = "<!DOCTYPE html><html lang=\"en\"><head><title>HTTP GET Request</title>"
-                          "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/"
-                          "3.3.5/css/bootstrap.min.css\"><link href='https://fonts.googleapis.com/css?"
-                          "family=Open+Sans:300,600' rel='stylesheet' type='text/css'></head><body>"
-                          "<h1 style=\"margin-left:10px;font-family:'Open Sans',sans-serif;font-weight:600;\">GET "
-                          "Operation</h1><table style=\"margin-left:10px;width:auto;font-family:'Open Sans',sans-serif;font-weight:300;"
-                          "\"class=\"table\"><thead><th><b>Parameter</b></th><th><b>Value</b></th></thead>";
+                  entity_body = "<!DOCTYPE html>\n"
+                          "<html lang=\"en\">\n"
+                          "<head>\n"
+                          "    <title>HTTP GET Request</title>\n"
+                          "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\\\">\n"
+                          "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
+                          "</head>\n"
+                          "<body>\n"
+                          "    <h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">GET Operation</h1>\n"
+                          "    <table style=\"margin-left:10px; width:auto; font-family:'Open Sans',sans-serif; font-weight:300;\" class=\"table\">\n"
+                          "        <thead>\n"
+                          "            <th><b>Parameter</b></th>\n"
+                          "            <th><b>Value</b></th>\n"
+                          "        </thead>";
                   for (i = params.begin(); i != params.end(); ++i) {
                       entity_body.append("<tr><td>");
                       entity_body.append(i->first);
