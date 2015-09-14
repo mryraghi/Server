@@ -225,7 +225,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                     "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
                     "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                     "</head>\n"
-                    "<body font-family:'Open Sans',sans-serif;>\n"
+                    "<body font-family:'Open Sans',sans-serif; style=\"margin-left:10px\">\n"
                     "\n"
                     "<h1><a href=\"#csci-440-http-server\" name=\"csci-440-http-server\" id=\"csci-440-http-server\" class=\"anchor\"></a>CSCI 440: HTTP Server</h1>\n"
                     "<p>by Romeo Bellon</p>\n"
