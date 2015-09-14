@@ -86,6 +86,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
           std::string request(data_);
 
+        std::cout << request << "\n\n\n" << std::endl;
+
           std::istringstream iss(request);
           std::string method;
           std::string query;
