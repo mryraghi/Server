@@ -147,7 +147,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
               if (!params.empty()) {
                   entity_body.clear();
                   entity_body = "<html><body><h1>GET Operation</h1><table cellpadding=5 cellspacing=5 border=1>";
-                  entity_body = "<tr><td><b>Parameter</b></td><td><b>Value</b></td></tr>";
+                  entity_body.append("<tr><td><b>Parameter</b></td><td><b>Value</b></td></tr>");
                   for (i = params.begin(); i != params.end(); ++i) {
                       entity_body.append("<tr><td>");
                       entity_body.append(i->first);
