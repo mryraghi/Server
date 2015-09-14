@@ -177,6 +177,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "</form>\n"
                           "</body>\n"
                           "</html>";
+
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
