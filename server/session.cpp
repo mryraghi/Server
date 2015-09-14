@@ -217,7 +217,17 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
             }
             entity_body.append("</table></body></html>");
         } else if (url == "/index.html") {
-            entity_body = "<h1><a href=\"#csci-440-http-server\" name=\"csci-440-http-server\" id=\"csci-440-http-server\" class=\"anchor\"></a>CSCI 440: HTTP Server</h1>\n"
+            entity_body = "<!DOCTYPE html>\n"
+                    "<html lang=\"en\">\n"
+                    "<head>\n"
+                    "    <meta charset=\"UTF-8\">\n"
+                    "    <title>Index Page - Romeo Bellon</title>\n"
+                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
+                    "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
+                    "</head>\n"
+                    "<body font-family:'Open Sans',sans-serif;>\n"
+                    "\n"
+                    "<h1><a href=\"#csci-440-http-server\" name=\"csci-440-http-server\" id=\"csci-440-http-server\" class=\"anchor\"></a>CSCI 440: HTTP Server</h1>\n"
                     "<p>by Romeo Bellon</p>\n"
                     "<ul>\n"
                     "  <li>this little project/assignment can be easily tested here:\n"
