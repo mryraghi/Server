@@ -82,7 +82,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
 
         std::ostringstream ss;
-          char response_buffer[1024];
+        char response_buffer[100000];
 
           std::string request(data_);
 
