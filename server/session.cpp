@@ -146,7 +146,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
                           "</body>\n"
                           "</html>";
-              } else {
+              } else if (url == "/SimplePost.html") {
                   entity_body = "<!DOCTYPE html>\n"
                           "<html lang=\"en\">\n"
                           "<head>\n"
