@@ -148,8 +148,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                   entity_body.clear();
                   entity_body = "<!DOCTYPE html><html lang=\"en\"><head><title>HTTP GET Request</title>"
                           "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\"></head>"
-                          "<body><h1>GET Operation</h1><table class=\"table\" cellpadding=5 cellspacing=5 border=1>";
-                  entity_body.append("<tr><td><b>Parameter</b></td><td><b>Value</b></td></tr>");
+                          "<body><h1>GET Operation</h1><table class=\"table\">";
+                  entity_body.append("<thead><th><b>Parameter</b></th><th><b>Value</b></th></thead>");
                   for (i = params.begin(); i != params.end(); ++i) {
                       entity_body.append("<tr><td>");
                       entity_body.append(i->first);
