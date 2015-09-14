@@ -154,7 +154,6 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                           "</head>\n"
                           "<body>\n"
-                          "<span class=\"glyphicon glyphicon-console\" aria-hidden=\"true\"></span>\n"
                           "\n"
                           "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Simple POST</h1>\n"
                           "\n"
