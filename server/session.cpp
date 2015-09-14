@@ -130,22 +130,51 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
 
         std::string entity_body;
-          std::fstream f;     // file stream
-          if (url != "/SimplePost.html" && params.empty()) {
-              url = "/error.html";
-              error_code = 404;
-          }
-          std::string complete_path = "/home/romeo/Documents/Server" + url;
           try {
-              f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
-              std::string temp;     // temp variable we will use for getting chunked data
-              while (!f.eof()) {     // read data until the end of file is reached
-                  f >> temp;     // get first chunk of data
-                  entity_body.append(temp);
+              if (url != "/SimplePost.html" && params.empty()) {
+                  entity_body = "<!DOCTYPE html>\n"
+                          "<html lang=\"en\">\n"
+                          "<head>\n"
+                          "    <meta charset=\"UTF-8\">\n"
+                          "    <title>SimplePost</title>\n"
+                          "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
+                          "</head>\n"
+                          "<body>\n"
+                          "<h5><span class=\"glyphicon glyphicon-console\" aria-hidden=\"true\"></span>Simple POST</h5>\n"
+                          "\n"
+                          "<form method=\"post\" action=\"104.131.100.250\">\n"
+                          "    <div class=\"form-group\">\n"
+                          "        <label>First variable</label>\n"
+                          "        <input type=\"text\" class=\"form-control\" name=\"first\" placeholder=\"e.g. Romeo\">\n"
+                          "    </div>\n"
+                          "    <div class=\"form-group\">\n"
+                          "        <label>Second variable</label>\n"
+                          "        <input type=\"text\" class=\"form-control\" name=\"second\" placeholder=\"e.g. Bellon\">\n"
+                          "    </div>\n"
+                          "    <div class=\"form-group\">\n"
+                          "        <label>Third variable</label>\n"
+                          "        <input type=\"text\" class=\"form-control\" name=\"third\" placeholder=\"e.g. CSCI 440\">\n"
+                          "    </div>\n"
+                          "    <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n"
+                          "</form>\n"
+                          "</body>\n"
+                          "</html>";
+              } else {
+                  entity_body = "<!DOCTYPE html>\n"
+                          "<html lang=\"en\">\n"
+                          "<head>\n"
+                          "    <meta charset=\"UTF-8\">\n"
+                          "    <title>Page not found!</title>\n"
+                          "</head>\n"
+                          "<body>\n"
+                          "<h3>404 Page not found ;)</h3>\n"
+                          "\n"
+                          "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
+                          "</body>\n"
+                          "</html>";
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
-                  entity_body.clear();
                   entity_body = "<!DOCTYPE html><html lang=\"en\"><head><title>HTTP GET Request</title>"
                           "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/"
                           "3.3.5/css/bootstrap.min.css\"><link href='https://fonts.googleapis.com/css?"
