@@ -5,6 +5,7 @@
 #include <boost/thread/thread.hpp>
 
 
+
 /**
 
   Constructor:
@@ -86,32 +87,42 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
         std::string request(data_);
 
-        std::cout << request << "\n\n\n" << std::endl;
-
         std::istringstream iss(request);
         std::string method;
         std::string query;
         std::string protocol;
+        std::string url;
+        std::string operation;
+        // store query key/value pairs in a map
+        std::map<std::string, std::string> params;
+
+        std::string keyval, key, val;
         int error_code = 200;
 
         if (!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol)) {
             std::cout << "ERROR: parsing request\n";
         }
 
-        iss.clear();
-        iss.str(query);
+        if (method == "GET") {
+            iss.clear();
+            iss.str(query);
+            operation = "GET Request";
 
-        std::string url;
-
-        if (!std::getline(iss, url, '?')) // remove the URL part
-        {
-            std::cout << "ERROR: parsing request url\n";
+            if (!std::getline(iss, url, '?')) // remove the URL part
+            {
+                std::cout << "ERROR: parsing request url\n";
+            }
+        } else {
+            operation = "POST";
+            std::istringstream f(request);
+            std::string line;
+            std::string string_content;
+            while (std::getline(f, line)) {
+                string_content = line;
+            }
+            iss.clear();
+            iss.str(string_content);
         }
-
-        // store query key/value pairs in a map
-        std::map<std::string, std::string> params;
-
-        std::string keyval, key, val;
 
         while (std::getline(iss, keyval, '&')) // split each term
         {
@@ -182,17 +193,21 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
             entity_body = "<!DOCTYPE html>\n"
                     "<html lang=\"en\">\n"
                     "<head>\n"
-                    "    <title>HTTP GET Request</title>\n"
+                    "    <title>HTTP ";
+            entity_body.append(operation);
+            entity_body.append(" Request</title>\n"
                     "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\">\n"
                     "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                     "</head>\n"
                     "<body>\n"
-                    "    <h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">GET Operation</h1>\n"
+                                       "    <h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">");
+            entity_body.append(operation);
+            entity_body.append("</h1>\n"
                     "    <table style=\"margin-left:10px; width:auto; font-family:'Open Sans',sans-serif; font-weight:300;\" class=\"table\">\n"
                     "        <thead>\n"
                     "            <th><b>Parameter</b></th>\n"
                     "            <th><b>Value</b></th>\n"
-                    "        </thead>";
+                                       "        </thead>");
             for (i = params.begin(); i != params.end(); ++i) {
                 entity_body.append("<tr><td>");
                 entity_body.append(i->first);
