@@ -216,8 +216,28 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                 entity_body.append("</td></tr>\n");
             }
             entity_body.append("</table></body></html>");
+        } else if (url == "/index.html") {
+            entity_body = "<h1><a href=\"#csci-440-http-server\" name=\"csci-440-http-server\" id=\"csci-440-http-server\" class=\"anchor\"></a>CSCI 440: HTTP Server</h1>\n"
+                    "<p>by Romeo Bellon</p>\n"
+                    "<ul>\n"
+                    "  <li>this little project/assignment can be easily tested here:\n"
+                    "    <ul>\n"
+                    "      <li><a href=\"http://104.131.100.250:8080/index.html\">http://104.131.100.250:8080/index.html</a> // INDEX page</li>\n"
+                    "      <li><a href=\"http://104.131.100.250:8080/?name=Romeo&surname=Bellon&class=CSCI440\">http://104.131.100.250:8080/?name=Romeo&surname=Bellon&class=CSCI440</a> // GET Operation</li>\n"
+                    "      <li><a href=\"http://104.131.100.250:8080/SimplePost.html\">http://104.131.100.250:8080/SimplePost.html</a> // POST Operation</li>\n"
+                    "      <li><a href=\"http://104.131.100.250:8080/asdafasfsdf\">http://104.131.100.250:8080/asdafasfsdf</a> // ERROR handling</li>\n"
+                    "    </ul>\n"
+                    "  </li>\n"
+                    "  <li>the GitHub page for this project/assignment is <a href=\"https://github.com/mryraghi/Server\">https://github.com/mryraghi/Server</a></li>\n"
+                    "  <li>this is project made with Clion 1.1.1 but is executable even from the terminal, of course</li>\n"
+                    "  <li>I've create a script <strong>autoscript.sh</strong> that helped me to automate the process of updating my local repository from github. It's not necessary to use it, but it is useful.</li>\n"
+                    "  <li>\n"
+                    "  <p>This is the best I can do for now :)</p></li>\n"
+                    "</ul>";
         }
-          long len = entity_body.length();
+
+
+        long len = entity_body.length();
 
           ss << len;
 
