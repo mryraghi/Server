@@ -141,12 +141,13 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           try {
               if (url != "/SimplePost.html" && params.empty()) {
 
-                  f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
-                  std::string temp;     // temp variable we will use for getting chunked data
-                  while (!f.eof()) {     // read data until the end of file is reached
-                      f >> temp;     // get first chunk of data
-                      entity_body.append(temp);
-                  }
+                  std::ifstream in(complete_path);
+
+                  std::stringstream buffer;
+                  buffer << in.rdbuf();
+
+                  std::string contents(buffer.str());
+                  complete_path = contents;
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
