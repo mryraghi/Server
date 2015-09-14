@@ -150,8 +150,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                           "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/"
                           "3.3.5/css/bootstrap.min.css\"><link href='https://fonts.googleapis.com/css?"
                           "family=Open+Sans:300,600' rel='stylesheet' type='text/css'></head><body>"
-                          "<h1 style=\"font-family:'Open Sans',sans-serif;font-weight:600;\">GET "
-                          "Operation</h1><table style=\"font-family:'Open Sans',sans-serif;font-weight:300;"
+                          "<h1 style=\"margin-left:10px;font-family:'Open Sans',sans-serif;font-weight:600;\">GET "
+                          "Operation</h1><table style=\"margin-left:10px;width:auto;font-family:'Open Sans',sans-serif;font-weight:300;"
                           "\"class=\"table\"><thead><th><b>Parameter</b></th><th><b>Value</b></th></thead>";
                   for (i = params.begin(); i != params.end(); ++i) {
                       entity_body.append("<tr><td>");
