@@ -146,7 +146,9 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
                   entity_body.clear();
-                  entity_body = "<html><body><h1>GET Operation</h1><table cellpadding=5 cellspacing=5 border=1>";
+                  entity_body = "<html><head><title>HTTP GET Request</title>"
+                          "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\"></head>"
+                          "<body><h1>GET Operation</h1><table class=\"table\" cellpadding=5 cellspacing=5 border=1>";
                   entity_body.append("<tr><td><b>Parameter</b></td><td><b>Value</b></td></tr>");
                   for (i = params.begin(); i != params.end(); ++i) {
                       entity_body.append("<tr><td>");
