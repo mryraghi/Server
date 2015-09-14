@@ -84,129 +84,123 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
         std::ostringstream ss;
         char response_buffer[100000];
 
-          std::string request(data_);
+        std::string request(data_);
 
         std::cout << request << "\n\n\n" << std::endl;
 
-          std::istringstream iss(request);
-          std::string method;
-          std::string query;
-          std::string protocol;
-          int error_code = 200;
+        std::istringstream iss(request);
+        std::string method;
+        std::string query;
+        std::string protocol;
+        int error_code = 200;
 
-          if (!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol)) {
-              std::cout << "ERROR: parsing request\n";
-          }
+        if (!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol)) {
+            std::cout << "ERROR: parsing request\n";
+        }
 
-          iss.clear();
-          iss.str(query);
+        iss.clear();
+        iss.str(query);
 
-          std::string url;
+        std::string url;
 
-          if (!std::getline(iss, url, '?')) // remove the URL part
-          {
-              std::cout << "ERROR: parsing request url\n";
-          }
+        if (!std::getline(iss, url, '?')) // remove the URL part
+        {
+            std::cout << "ERROR: parsing request url\n";
+        }
 
-          // store query key/value pairs in a map
-          std::map<std::string, std::string> params;
+        // store query key/value pairs in a map
+        std::map<std::string, std::string> params;
 
-          std::string keyval, key, val;
+        std::string keyval, key, val;
 
-          while (std::getline(iss, keyval, '&')) // split each term
-          {
-              std::istringstream iss(keyval);
+        while (std::getline(iss, keyval, '&')) // split each term
+        {
+            std::istringstream iss(keyval);
 
-              if (std::getline(std::getline(iss, key, '='), val))
-                  params[key] = val;
-          }
+            if (std::getline(std::getline(iss, key, '='), val))
+                params[key] = val;
+        }
 
-          std::cout << "protocol: " << protocol << '\n';
-          std::cout << "method  : " << method << '\n';
-          std::cout << "url     : " << url << '\n';
+        std::cout << "protocol: " << protocol << '\n';
+        std::cout << "method  : " << method << '\n';
+        std::cout << "url     : " << url << '\n';
 
-          std::map<std::string, std::string>::iterator i;
+        std::map<std::string, std::string>::iterator i;
 
-          for (i = params.begin(); i != params.end(); ++i)
-              std::cout << "param   : " << i->first << " = " << i->second << '\n';
+        for (i = params.begin(); i != params.end(); ++i)
+            std::cout << "param   : " << i->first << " = " << i->second << '\n';
 
 
         std::string entity_body;
-          try {
-              if (url != "/SimplePost.html" && params.empty()) {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <meta charset=\"UTF-8\">\n"
-                          "    <title>Page not found!</title>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "<h3>404 Page not found ;)</h3>\n"
-                          "\n"
-                          "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
-                          "</body>\n"
-                          "</html>";
-              } else if (url == "/SimplePost.html") {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <meta charset=\"UTF-8\">\n"
-                          "    <title>SimplePost</title>\n"
-                          "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
-                          "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "\n"
-                          "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Simple POST</h1>\n"
-                          "\n"
-                          "<form style=\"margin-left: 10px; width: auto; font-family:'Open Sans',sans-serif; font-weight:300;\" method=\"post\"\n"
-                          "      action=\"104.131.100.250\">\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>First variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"first\" placeholder=\"e.g. Romeo\">\n"
-                          "    </div>\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>Second variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"second\" placeholder=\"e.g. Bellon\">\n"
-                          "    </div>\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>Third variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"third\" placeholder=\"e.g. CSCI 440\">\n"
-                          "    </div>\n"
-                          "    <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n"
-                          "</form>\n"
-                          "</body>\n"
-                          "</html>";
+        if (url != "/SimplePost.html" && params.empty()) {
+            entity_body = "<!DOCTYPE html>\n"
+                    "<html lang=\"en\">\n"
+                    "<head>\n"
+                    "    <meta charset=\"UTF-8\">\n"
+                    "    <title>Page not found!</title>\n"
+                    "</head>\n"
+                    "<body>\n"
+                    "<h3>404 Page not found ;)</h3>\n"
+                    "\n"
+                    "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
+                    "</body>\n"
+                    "</html>";
+        } else if (url == "/SimplePost.html") {
+            entity_body = "<!DOCTYPE html>\n"
+                    "<html lang=\"en\">\n"
+                    "<head>\n"
+                    "    <meta charset=\"UTF-8\">\n"
+                    "    <title>SimplePost</title>\n"
+                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
+                    "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
+                    "</head>\n"
+                    "<body>\n"
+                    "\n"
+                    "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Simple POST</h1>\n"
+                    "\n"
+                    "<form style=\"margin-left: 10px; width: auto; font-family:'Open Sans',sans-serif; font-weight:300;\" method=\"post\"\n"
+                    "      action=\"104.131.100.250\">\n"
+                    "    <div class=\"form-group\">\n"
+                    "        <label>First variable</label>\n"
+                    "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"first\" placeholder=\"e.g. Romeo\">\n"
+                    "    </div>\n"
+                    "    <div class=\"form-group\">\n"
+                    "        <label>Second variable</label>\n"
+                    "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"second\" placeholder=\"e.g. Bellon\">\n"
+                    "    </div>\n"
+                    "    <div class=\"form-group\">\n"
+                    "        <label>Third variable</label>\n"
+                    "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"third\" placeholder=\"e.g. CSCI 440\">\n"
+                    "    </div>\n"
+                    "    <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n"
+                    "</form>\n"
+                    "</body>\n"
+                    "</html>";
 
-              }
-          } catch (std::ios_base::failure e) {
-              if (!params.empty()) {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <title>HTTP GET Request</title>\n"
-                          "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\\\">\n"
-                          "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "    <h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">GET Operation</h1>\n"
-                          "    <table style=\"margin-left:10px; width:auto; font-family:'Open Sans',sans-serif; font-weight:300;\" class=\"table\">\n"
-                          "        <thead>\n"
-                          "            <th><b>Parameter</b></th>\n"
-                          "            <th><b>Value</b></th>\n"
-                          "        </thead>";
-                  for (i = params.begin(); i != params.end(); ++i) {
-                      entity_body.append("<tr><td>");
-                      entity_body.append(i->first);
-                      entity_body.append("</td><td>");
-                      entity_body.append(i->second);
-                      entity_body.append("</td></tr>");
-                  }
-                  entity_body.append("</table></body></html>");
-              }
-          }
-
-
+        } else if (!params.empty()) {
+            entity_body = "<!DOCTYPE html>\n"
+                    "<html lang=\"en\">\n"
+                    "<head>\n"
+                    "    <title>HTTP GET Request</title>\n"
+                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\\\">\n"
+                    "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
+                    "</head>\n"
+                    "<body>\n"
+                    "    <h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">GET Operation</h1>\n"
+                    "    <table style=\"margin-left:10px; width:auto; font-family:'Open Sans',sans-serif; font-weight:300;\" class=\"table\">\n"
+                    "        <thead>\n"
+                    "            <th><b>Parameter</b></th>\n"
+                    "            <th><b>Value</b></th>\n"
+                    "        </thead>";
+            for (i = params.begin(); i != params.end(); ++i) {
+                entity_body.append("<tr><td>");
+                entity_body.append(i->first);
+                entity_body.append("</td><td>");
+                entity_body.append(i->second);
+                entity_body.append("</td></tr>");
+            }
+            entity_body.append("</table></body></html>");
+        }
           long len = entity_body.length();
 
           ss << len;
