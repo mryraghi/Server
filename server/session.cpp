@@ -243,7 +243,9 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                     "  <li>I've create a script <strong>autoscript.sh</strong> that helped me to automate the process of updating my local repository from github. It's not necessary to use it, but it is useful.</li>\n"
                     "  <li>\n"
                     "  <p>This is the best I can do for now :)</p></li>\n"
-                    "</ul>";
+                    "</ul>"
+                    "</body>\n"
+                    "</html>";
         }
 
 
