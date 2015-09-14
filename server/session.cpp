@@ -152,7 +152,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                     "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                     "</head>\n"
                     "<body>\n"
-                    "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Page not found!</h1>\n"
+                    "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Page not found!d</h1>\n"
                     "\n"
                     "<p style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:300;\">For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
                     "</body>\n"
