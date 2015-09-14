@@ -127,7 +127,9 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
           for (i = params.begin(); i != params.end(); ++i)
               std::cout << "param   : " << i->first << " = " << i->second << '\n';
-          std::string entity_body;
+
+
+        std::string entity_body;
           std::fstream f;     // file stream
           if (url != "/SimplePost.html" && params.empty()) {
               url = "/error.html";
@@ -144,12 +146,16 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
                   entity_body.clear();
+                  entity_body = "<html><body><h1>GET Operation</h1><table cellpadding=5 cellspacing=5 border=1>";
+                  entity_body = "<tr><td><b>Parameter</b></td><td><b>Value</b></td></tr>";
                   for (i = params.begin(); i != params.end(); ++i) {
-                      entity_body.append("\nparam: ");
+                      entity_body.append("<tr><td>");
                       entity_body.append(i->first);
-                      entity_body.append(" = ");
+                      entity_body.append("</td><td>");
                       entity_body.append(i->second);
+                      entity_body.append("</td></tr>");
                   }
+                  entity_body.append("</table></body></html>");
               }
           }
 
@@ -163,9 +169,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                   "HTTP/1.1 " + std::to_string(error_code) + " OK\r\nContent-length: " + content_length + "\r\n\r\n";
           std::string response = header + entity_body;
 
-          //std::cout<<"Response message:\n"<<std::endl;
           strcpy(response_buffer, response.c_str());
-          //std::cout<<response_buffer<<std::endl;
           std::cout << "------------------------------------------------------------" << std::endl;
 
 
