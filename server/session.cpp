@@ -141,13 +141,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
           try {
               if (url != "/SimplePost.html" && params.empty()) {
 
-                  std::ifstream in(complete_path);
-
-                  std::stringstream buffer;
-                  buffer << in.rdbuf();
-
-                  std::string contents(buffer.str());
-                  complete_path = contents;
+                  f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
+                  getline(f, complete_path, ' ');
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
