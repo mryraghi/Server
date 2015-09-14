@@ -138,11 +138,12 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                     "<head>\n"
                     "    <meta charset=\"UTF-8\">\n"
                     "    <title>Page not found!</title>\n"
+                    "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                     "</head>\n"
                     "<body>\n"
-                    "<h3>404 Page not found ;)</h3>\n"
+                    "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Simple POST</h1>\n"
                     "\n"
-                    "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
+                    "<p style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:300;\">For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
                     "</body>\n"
                     "</html>";
         } else if (url == "/SimplePost.html") {
@@ -182,7 +183,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                     "<html lang=\"en\">\n"
                     "<head>\n"
                     "    <title>HTTP GET Request</title>\n"
-                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\\\">\n"
+                    "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap3.3.5/css/bootstrap.min.css\">\n"
                     "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
                     "</head>\n"
                     "<body>\n"
@@ -197,7 +198,7 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
                 entity_body.append(i->first);
                 entity_body.append("</td><td>");
                 entity_body.append(i->second);
-                entity_body.append("</td></tr>");
+                entity_body.append("</td></tr>\n");
             }
             entity_body.append("</table></body></html>");
         }
