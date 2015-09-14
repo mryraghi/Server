@@ -132,51 +132,21 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
 
         std::string entity_body;
+        std::fstream f;     // file stream
+        if (url != "/SimplePost.html" && params.empty()) {
+            url = "/error.html";
+            error_code = 404;
+        }
+        std::string complete_path = "/home/romeo/Documents/Server" + url;
           try {
               if (url != "/SimplePost.html" && params.empty()) {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <meta charset=\"UTF-8\">\n"
-                          "    <title>Page not found!</title>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "<h3>404 Page not found ;)</h3>\n"
-                          "\n"
-                          "<p>For more information please read the README.md file.<br><br>Romeo Bellon</p>\n"
-                          "</body>\n"
-                          "</html>";
-              } else if (url == "/SimplePost.html") {
-                  entity_body = "<!DOCTYPE html>\n"
-                          "<html lang=\"en\">\n"
-                          "<head>\n"
-                          "    <meta charset=\"UTF-8\">\n"
-                          "    <title>SimplePost</title>\n"
-                          "    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">\n"
-                          "    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>\n"
-                          "</head>\n"
-                          "<body>\n"
-                          "\n"
-                          "<h1 style=\"margin-left:10px; font-family:'Open Sans',sans-serif; font-weight:600;\">Simple POST</h1>\n"
-                          "\n"
-                          "<form style=\"margin-left: 10px; width: auto; font-family:'Open Sans',sans-serif; font-weight:300;\" method=\"post\"\n"
-                          "      action=\"104.131.100.250\">\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>First variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"first\" placeholder=\"e.g. Romeo\">\n"
-                          "    </div>\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>Second variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"second\" placeholder=\"e.g. Bellon\">\n"
-                          "    </div>\n"
-                          "    <div class=\"form-group\">\n"
-                          "        <label>Third variable</label>\n"
-                          "        <input style=\"width: auto\" type=\"text\" class=\"form-control\" name=\"third\" placeholder=\"e.g. CSCI 440\">\n"
-                          "    </div>\n"
-                          "    <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n"
-                          "</form>\n"
-                          "</body>\n"
-                          "</html>";
+
+                  f.open(complete_path.c_str(), std::ios_base::in);     // open file for reading
+                  std::string temp;     // temp variable we will use for getting chunked data
+                  while (!f.eof()) {     // read data until the end of file is reached
+                      f >> temp;     // get first chunk of data
+                      entity_body.append(temp);
+                  }
               }
           } catch (std::ios_base::failure e) {
               if (!params.empty()) {
