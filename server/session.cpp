@@ -81,28 +81,25 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
 
     if (!error) {
 
-
-        std::ostringstream ss;
         char response_buffer[100000];
-
+        std::ostringstream ss;
         std::string request(data_);
-
         std::istringstream iss(request);
         std::string method;
         std::string query;
         std::string protocol;
         std::string url;
         std::string operation;
+
         // store query key/value pairs in a map
         std::map<std::string, std::string> params;
-
         std::string keyval, key, val;
         int error_code = 200;
-
         if (!std::getline(std::getline(std::getline(iss, method, ' '), query, ' '), protocol)) {
             std::cout << "ERROR: parsing request\n";
         }
 
+        // GET or POST?
         if (method == "GET") {
             iss.clear();
             iss.str(query);
@@ -124,7 +121,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
             iss.str(string_content);
         }
 
-        while (std::getline(iss, keyval, '&')) // split each term
+        // SPLIT
+        while (std::getline(iss, keyval, '&'))
         {
             std::istringstream iss(keyval);
 
@@ -141,8 +139,8 @@ void session::handle_read( const boost::system::error_code& error, size_t bytes_
         for (i = params.begin(); i != params.end(); ++i)
             std::cout << "param   : " << i->first << " = " << i->second << '\n';
 
-
         std::string entity_body;
+
         if (url != "/SimplePost.html" && url != "/index.html" && params.empty()) {
             entity_body = "<!DOCTYPE html>\n"
                     "<html lang=\"en\">\n"
